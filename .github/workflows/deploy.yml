@@ -12,6 +12,8 @@ jobs:
           host: ${{ secrets.YACLOUD_HOST }}
           username: ${{ secrets.YACLOUD_USER }}
           key: ${{ secrets.SSH_KEY }}
-          scripts: |
+          script: |
             sudo docker pull taymir007/flaskapp
+            sudo docker stop $(sudo docker ps -a -q)
+            sudo docker run --rm -d -p 5001:5001 taymir007/flaskapp
 

@@ -58,7 +58,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: "docker-compose.yaml, nginx/default.conf"
           target: "~/app/"
-          scripts: |
+          script: |
             sudo docker pull taymir007/flaskapp
             sudo docker stop $(sudo docker ps -a -q)
             sudo docker run --rm -d -p 5001:5001 taymir007/flaskapp
